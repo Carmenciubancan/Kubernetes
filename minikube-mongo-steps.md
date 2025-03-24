@@ -1,6 +1,6 @@
 # Deploy mongoDB and mongo express into a local K8s cluster ( Minikube )
 
-Steps: 
+Steps; overview 
 
 1. install minikube on local
 2. create a mongodb deployment + internal service
@@ -16,26 +16,26 @@ Steps:
 
 __________________________________________
 
-´$ brew install minikube´
+`$ brew install minikube`
 
-´$ minikube start --driver docker´
+`$ minikube start --driver docker`
 
-´$ kubectl get all´ # lists all the components inside the cluster
+`$ kubectl get all` # lists all the components inside the cluster
 
-´$ vim mongo-deployment.yaml´ #create deployment conf file
+`$ vim mongo-deployment.yaml` #create deployment conf file
 
-´$ vim mongo-secret.yaml´ # create secret file to store credentials
+`$ vim mongo-secret.yaml` # create secret file to store credentials
 
-´$ echo -n 'username' | base64´
-´$ echo -n 'password' | base64´ # encode credentials in base64
+`$ echo -n 'username' | base64`
+`$ echo -n 'password' | base64` # encode credentials in base64
 
 * store the encoded credentials into deployment config file
 
-´$ kubectl apply -f [secret file name]´ 
+`$ kubectl apply -f [secret file name]` 
 
-´$ kubectl get secret´ #lists existing secrets
+`$ kubectl get secret` #lists existing secrets
 
-´$ kubectl apply -f [deployment file name]´ #applies the deployment configuration and creates it
+`$ kubectl apply -f [deployment file name]` #applies the deployment configuration and creates it
 __________________________
 
 the worklow in the background: 
