@@ -36,11 +36,12 @@ __________________________________________
 ´$ kubectl get secret´ #lists existing secrets
 
 ´$ kubectl apply -f [deployment file name]´ #applies the deployment configuration and creates it
+__________________________
 
+the worklow in the background: 
 
-´´
-
-´´
-
-´´
-
+- user interacts with DB in the browser
+- request being sent to mongoexpress external service 
+- mongoexpress external service forwarded the request to the mongoexpress pod
+- the mongo express pod connects to the mongoDB internal service
+- mongoDB internal service connects to the mongoDB pod. 
