@@ -1,0 +1,6 @@
+architecture: replicaset
+replicaCount: 3
+persistence: # configure a persistent volume for mongodb
+  storageClass: "do-block-storage" # create physical storage on the cloud machine, and attach it to the pod
+auth:
+  rootPassword: secret-root-pwd

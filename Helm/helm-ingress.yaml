@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    name: mongo-express
+spec:
+  rules:
+  - host: YOUR_HOST_DNS_NAME # the domain address that is conncted to the cluster
+    http: # requests are coming in to the domain name above and are forwarded to the service defined below, on port 8081
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: mongo-express-service
+              port:
+                number: 8081
