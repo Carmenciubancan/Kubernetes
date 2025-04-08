@@ -1,0 +1,25 @@
+# deploys the web app in a pod, pulling the image from ECR, using credentials stored in secret file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas:
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      imagePullSecrets: #using the credentials from the secret file
+      - name: my-registry-key
+      containers:
+      - name: my-app
+        image: 891377303456.dkr.ecr.eu-central-1.amazonaws.com/my-app:latest
+        imagePullPolicy: Always #forces docker to always pull the image from the registry above when the pod is created
+        ports:
+        - containerPort: 3000
